@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "Orders API",
+    "description": "Colección de endpoints para la API de órdenes",
+    "version": "1.0.0"
+  },
+  "requests": [
+    {
+      "name": "Health Check",
+      "method": "GET",
+      "url": "http://localhost:3000/api/health",
+      "description": "Verificar estado del servidor"
+    },
+    {
+      "name": "Create Order",
+      "method": "POST",
+      "url": "http://localhost:3000/api/orders",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "customer_name": "Juan Pérez",
+        "item": "Laptop Dell XPS 15",
+        "quantity": 1,
+        "status": "pending"
+      },
+      "description": "Crear una nueva orden"
+    },
+    {
+      "name": "Get All Orders (Page 1)",
+      "method": "GET",
+      "url": "http://localhost:3000/api/orders?page=1&page_size=10",
+      "description": "Obtener lista paginada de órdenes"
+    },
+    {
+      "name": "Get Order by ID",
+      "method": "GET",
+      "url": "http://localhost:3000/api/orders/{{orderId}}",
+      "description": "Obtener orden específica por ID (reemplazar {{orderId}})"
+    },
+    {
+      "name": "Update Order",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/orders/{{orderId}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "status": "completed",
+        "quantity": 2
+      },
+      "description": "Actualizar una orden existente"
+    },
+    {
+      "name": "Delete Order",
+      "method": "DELETE",
+      "url": "http://localhost:3000/api/orders/{{orderId}}",
+      "description": "Eliminar una orden"
+    },
+    {
+      "name": "Create Order - Validation Error",
+      "method": "POST",
+      "url": "http://localhost:3000/api/orders",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "customer_name": "",
+        "quantity": -1
+      },
+      "description": "Ejemplo de error de validación"
+    }
+  ]
+}
